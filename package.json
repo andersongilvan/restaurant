@@ -1,0 +1,32 @@
+{
+	"name": "restaurant-system",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "tsx src/server.ts",
+		"migration:generate": "node --import tsx ./node_modules/typeorm/cli.js migration:generate ./src/database/migrations/default -d ./src/data-source.ts",
+		"migration:run": "node --import tsx ./node_modules/typeorm/cli.js migration:run -d ./src/data-source.ts",
+		"lint": "biome check --write"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"type": "commonjs",
+	"dependencies": {
+		"dotenv": "^17.2.3",
+		"express": "^5.1.0",
+		"pg": "^8.16.3",
+		"reflect-metadata": "^0.2.2",
+		"typeorm": "^0.3.27",
+		"zod": "^4.1.13"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.3.7",
+		"@types/express": "^5.0.5",
+		"@types/node": "^24.10.1",
+		"tsx": "^4.20.6",
+		"typescript": "^5.9.3"
+	}
+}
