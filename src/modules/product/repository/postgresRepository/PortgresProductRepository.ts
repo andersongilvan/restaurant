@@ -42,13 +42,7 @@ export class PostgresProductRepository implements IProductRepository {
 	}
 
 	async update(data: Product): Promise<Product> {
-		const product = await this.db.findOne({
-			where: { id: data.id },
-		})
-
-		Object.assign(product, data)
-
-		return this.db.save(product)
+		return await this.db.save(data)
 	}
 
 	async delele(idProduct: number): Promise<void> {

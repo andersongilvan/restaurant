@@ -3,7 +3,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 @Entity({ name: 'products' })
 export class Product {
 	@PrimaryGeneratedColumn()
-	id: number
+	id!: number
 
 	@Column({ name: 'name', type: 'text', nullable: false })
 	name: string
@@ -16,4 +16,16 @@ export class Product {
 
 	@Column({ type: 'decimal', nullable: false })
 	price: number
+
+	constructor(
+		name: string,
+		description: string,
+		imgUrl: string,
+		price: number,
+	) {
+		this.name = name
+		this.description = description
+		this.imgUrl = imgUrl
+		this.price = price
+	}
 }

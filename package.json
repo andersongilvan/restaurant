@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"dev": "tsx src/server.ts",
+		"dev": "tsx watch src/server.ts",
 		"migration:generate": "node --import tsx ./node_modules/typeorm/cli.js migration:generate ./src/database/migrations/default -d ./src/data-source.ts",
 		"migration:run": "node --import tsx ./node_modules/typeorm/cli.js migration:run -d ./src/data-source.ts",
 		"lint": "biome check --write"
