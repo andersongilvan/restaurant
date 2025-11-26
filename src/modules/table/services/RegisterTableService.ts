@@ -1,6 +1,6 @@
 import { ResourceAlreadyExistError } from '../../../exceptions/ResourceAlreadyExistError'
 import { Table } from '../entity/Table'
-import { ITableRepository } from '../repository/ITableRepository'
+import type { ITableRepository } from '../repository/ITableRepository'
 
 interface RegisterTableServiceRequest {
 	tableNumber: number

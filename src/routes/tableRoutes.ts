@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import { registerTableController } from '../modules/table/controller/registerTableController'
 import { findAllTablesController } from '../modules/table/controller/findAllTablesController'
+import { registerTableController } from '../modules/table/controller/registerTableController'
 
 const tableRoutes = Router()
 

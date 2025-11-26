@@ -1,4 +1,4 @@
-import { Request, Response } from 'express'
+import type { Request, Response } from 'express'
 import z, { number } from 'zod'
 import { makeRegisterTableService } from '../services/fatory/makeRegisterTableService'
 
@@ -7,7 +7,9 @@ export async function registerTableController(
 	response: Response,
 ) {
 	const registerTableSchema = z.object({
-		tableNumber: number({ message : 'O número da mesa dever um número válido' }).nonnegative({
+		tableNumber: number({
+			message: 'O número da mesa dever um número válido',
+		}).nonnegative({
 			message: 'O número da mesa ser igual ou maior que zero',
 		}),
 	})

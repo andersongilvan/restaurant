@@ -1,6 +1,5 @@
-
-import { Table } from '../entity/Table'
-import { ITableRepository } from '../repository/ITableRepository'
+import type { Table } from '../entity/Table'
+import type { ITableRepository } from '../repository/ITableRepository'
 
 interface FindAllTableServiceRsponse {
 	tables: Table[]
