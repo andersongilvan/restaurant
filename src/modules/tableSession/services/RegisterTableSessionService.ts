@@ -1,16 +1,9 @@
 import { ResourceAlreadyExistError } from '../../../exceptions/ResourceAlreadyExistError'
 import { ResourceNotFoundError } from '../../../exceptions/ResourceNotFoundError'
 import type { ITableRepository } from '../../table/repository/ITableRepository'
+import type { TableSessionRequest } from '../DTO/TableSessionRequest'
 import { TableSession } from '../entity/TableSession'
 import type { TableSessionRepository } from '../repository/TableSessionRepository'
-
-interface RegisterTableSessionServiceRequest {
-	tableId: number
-}
-
-interface RegisterTableSessionServiceResponse {
-	tableSession: TableSession
-}
 
 export class RegisterTableSessionService {
 	constructor(
@@ -18,10 +11,12 @@ export class RegisterTableSessionService {
 		private tableRepository: ITableRepository,
 	) {}
 
-	async execute({
-		tableId,
-	}: RegisterTableSessionServiceRequest): Promise<RegisterTableSessionServiceResponse> {
-		const table = await this.tableRepository.findById(tableId)
+	async execute(
+		tableSessionRequest: TableSessionRequest,
+	): Promise<TableSession> {
+		const table = await this.tableRepository.findById(
+			tableSessionRequest.getTableId(),
+		)
 
 		if (!table) {
 			throw new ResourceNotFoundError('Mesa não cadastrada')
@@ -37,10 +32,6 @@ export class RegisterTableSessionService {
 		const tableSessionCrieated = new TableSession()
 		tableSessionCrieated.table = table
 
-		await this.tableSessionRepository.create(tableSessionCrieated)
-
-		return {
-			tableSession: tableSessionCrieated,
-		}
+		return await this.tableSessionRepository.create(tableSessionCrieated)
 	}
 }

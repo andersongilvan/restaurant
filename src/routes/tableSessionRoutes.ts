@@ -1,8 +1,8 @@
 import { Router } from 'express'
-import { registerTableSessionController } from '../modules/tableSession/controllers/registerTableSessionController'
+import { RegisterTableSessionController } from '../modules/tableSession/controllers/RegisterTableSessionController'
 
 const tableSessionRoutes = Router()
 
-tableSessionRoutes.post('/', registerTableSessionController)
+tableSessionRoutes.post('/', new RegisterTableSessionController().handler)
 
 export { tableSessionRoutes }
